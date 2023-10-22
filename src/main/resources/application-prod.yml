@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://orb-freeradius-1.cyg6ao0nnff3.ap-south-1.rds.amazonaws.com:3306/radius
+    username: root
+    password: ByzRsK28pW
+  mail:
+    username: info@orbvpn.com
+    password: nsoojhxetlcyjtgm
+
+oauth:
+  facebook:
+    app-id: 2998455443765493
+    app-secret: 690acb522724caa05e0c70083c1333dc
+
+stripe:
+  api:
+    secret-key: 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
+    public-key: pk_live_51J05ChKYm0whdaYrUOh4ue2598MXLr5xf34iGvunlv3wKAoLRxEvZt25spARozGV6EtcxvgGIiwWAh54sfnaObl900u49NQaJ6
+    webhook-secret: whsec_qBAL6SqSy6VtZiJIr2Mun0XVfYHALgZF

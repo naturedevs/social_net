@@ -1,0 +1,18 @@
+type AccountingView {
+    totalUsers: Int
+    joinedByDay: Int
+    joinedByMonth: Int
+    joinedByYear: Int
+
+    monthPurchaseCount: Int
+    monthPurchase: String
+
+    dayPurchaseCount: Int
+    dayPurchase: String
+
+    monthRenewPurchaseCount: Int
+    monthRenewPurchase: String
+
+    dayRenewPurchaseCount: Int
+    dayRenewPurchase: String
+}

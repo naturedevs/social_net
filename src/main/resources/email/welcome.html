@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>OrbVPN</title>
+
+    <style>
+        body {
+            font-family: Poppins;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 21px;
+            letter-spacing: 0.03em;
+            text-align: center;
+            color: #434343;
+        }
+        .header {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 21px;
+
+        }
+        .disclaimer {
+            font-style: italic;
+            font-weight: 300;
+            font-size: 9px;
+            line-height: 14px;
+            color: #000000;
+            opacity: 0.5;
+        }
+        .logo {
+            width: 58px;
+            height: 54.18px;
+            left: 271px;
+            top: 33.82px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .welcome {
+            width: 325.08px;
+            height: 51.45px;
+            left: 137px;
+            top: 150.5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .body-text {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 21px;
+            text-align: center;
+            color: #3C3C43;
+        }
+
+        .footer {
+            background-color: #2757D2;
+        }
+    </style>
+</head>
+
+<body>
+<img alt="OrbVPN" class="logo" src="../image/logo.svg">
+<br><br>
+<img alt="Welcome" class="welcome" src="../image/welcome.svg">
+<br><br>
+<div class="header">
+    <p>Dear User,</p>
+    <p>Welcome to your new OrbVPN Account.</p>
+</div>
+<div class="body-text">
+    <p th:text>Sing in to your OrbVPN account to access <br>
+        the <span th:text="${subscriptionName}">3 months</span> service.</p>
+    <p><b>Your username:</b></p>
+    <p><span th:text="${username}">Username</span></p>
+    <p class="body-text"><b>Password:</b></p>
+    <p class="body-text">click <u>Sign in</u> below to set your password</p>
+    <br>
+    <a href=""><img alt="SingIn" src="../image/button.svg"></a>
+    <br>
+    <p class="body-text">Your subscription is valid for <span th:text="${multiLogin}">1</span> device<span
+            th:if="${multiLogin > 1}">s</span>
+        <br>during next <span th:text="${duration}">10 days</span> and will be expired on <span th:text="${expireDate}">01-01-2022</span>.
+    </p>
+</div>
+
+
+<br>
+<div>
+    <p class="disclaimer"> Disclaimer: This message is intended only for the individual(s) named and may contain
+        confidential information.
+        <br>If you have received this e-mail in error you should not read, print, copy or forward it. <br>Please
+        notify the sender about the error immediately by e-mail and delete this message from your system.
+    </p>
+</div>
+<br>
+<div class="footer">
+    <br>
+    <a href="https://t.me/OrbVPN"><img alt="Telegram" src="../image/telegram.svg"></a>
+    <a href="https://www.instagram.com/orbvpn"><img alt="Instagram" src="../image/instagram.svg"></a>
+    <a href="https://wa.me/message/3NYJBB6MNCQPM1"><img alt="Whatsapp" src="../image/whatsapp.svg"></a>
+    <br><br>
+    <img alt="Support Team" src="../image/footer-text-1.svg">
+    <br><br>
+    <img alt="Contact" src="../image/footer-text.svg">
+    <br><br>
+</div>
+</body>
+
+</html>

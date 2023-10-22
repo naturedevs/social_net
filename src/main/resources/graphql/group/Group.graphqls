@@ -1,0 +1,34 @@
+input GroupEdit {
+    serviceGroupId: Int,
+    name: String,
+    description: String,
+    tagName: String,
+    duration: Int,
+    price: String,
+    usernamePostfix: String,
+    usernamePostfixId: String,
+    dailyBandwidth: String,
+    multiLoginCount: Int,
+    downloadUpload: String,
+    ip: IpType
+}
+
+enum IpType {
+    STATIC,DYNAMIC
+}
+
+type GroupView {
+    id: Int,
+    serviceGroup: ServiceGroupView,
+    name: String,
+    description: String,
+    tagName: String,
+    duration: Int,
+    price: String,
+    usernamePostfix: String,
+    usernamePostfixId: String,
+    dailyBandwidth: String,
+    multiLoginCount: Int,
+    downloadUpload: String
+    ip: IpType
+}

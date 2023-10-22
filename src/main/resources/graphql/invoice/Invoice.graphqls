@@ -1,0 +1,38 @@
+enum PaymentMethod {
+    FREE, RESELLER_CREDIT, STRIPE, PAYPAL, COINBASE, PARSPAL, APPLE, GOOGLE, COIN_PAYMENT
+}
+
+type InvoiceResponse {
+    id: Int
+    firstName: String
+    lastName: String
+    clientCompanyName: String
+    address: String
+    taxId: String
+    email: String
+    phoneNumber: String
+    groupId: Int
+    amountForGroup: Float
+    multiLogin: Int
+    amountForMultiLogin: Float
+    totalAmount: Float
+    paymentMethod: PaymentMethod
+    paymentDate: LocalDateTime
+    invoiceDate: LocalDateTime
+    updateDate: LocalDateTime
+}
+
+input InvoiceUpdate {
+    id: Int!
+    clientCompanyName: String
+    address: String
+    email: String
+    phoneNumber: String
+    taxId: String
+    companyRegistrationNumber: String
+}
+
+input InvoicePDF {
+    invoiceId: Int!
+    emailsToSend: [String]!
+}

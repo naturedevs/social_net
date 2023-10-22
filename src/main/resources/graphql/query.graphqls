@@ -1,0 +1,76 @@
+type Query {
+    user: UserView
+    userProfile: UserProfileView
+    userSubscription: UserSubscriptionView
+
+    getAllUserRoles: [RoleView]
+
+    gateways: [GatewayView]
+    serviceGroup(id: Int!): ServiceGroupView
+    serviceGroups: [ServiceGroupView]
+    group(id: Int): GroupView
+    groups(serviceGroupId: Int!): [GroupView]
+    registrationGroups: [GroupView]
+    allGroups: [GroupView]
+
+    server(id: Int!): ServerView
+    servers: [ServerView]
+    clientServers: [ClientServerView]
+    getClientSortedServers(sortBy: String!, parameter:String!): [ClientServerView]
+
+    reseller(id: Int!): ResellerView
+    resellers: [ResellerView]
+    getResellersLevels: [ResellerLevelView]
+    getResellersCredits: [ResellerCreditView]
+    getResellerLevelCoefficients: ResellerLevelCoefficientsView
+    totalResellersCredit: String
+    resellerGetUser (id: Int): UserView
+    resellerGetUserByEmail(email: String): UserView
+    resellerGetUserByUsername(username: String): UserView
+    resellerGetUserById(id: Int): UserView
+    resellerGetUsers (page: Int, size: Int): UserPage
+    resellerGetExpiredUsers(page: Int, size: Int): UserPage
+    getResellerScoreLimits: [ResellerScoreLimit]
+
+    geolocations: [GeolocationView]
+
+    news: [NewsView]!
+    newsById(id: Int): NewsView!
+
+    files: [FileView]
+    file (id: Int): FileView!
+
+    ticket(id: Int): TicketView
+    tickets(page: Int, size: Int, category: TicketCategory, status: TicketStatus): TicketPage
+    userTickets: [TicketView]
+
+    accounting: AccountingView
+    totalActiveUsers: Int
+    activeUsers(page: Int, size: Int): UserPage
+    inactiveUsers(page: Int, size: Int): UserPage
+    allUsers(sort: Boolean, page: Int, size: Int, param: String, query: String): UserPage
+
+    #Connections and devices
+    getConnectionHistory(userId: Int!): [ConnectionHistoryView]
+    getOnlineSessions(userId: Int!) : [OnlineSessionView]
+    getOnlineUsers(page: Int, size: Int, serverId: Int, groupId: Int, roleId: Int, serviceGroupId: Int) : UserPage
+    getDevices(userId: Int!): [DeviceView]
+    getDevicesByEmail(email: String!): [DeviceView]
+
+    #Buy More Logins
+    getBuyMoreLogins: BuyMoreLoginsView
+
+    #ReferralCode
+    getReferralCode: ReferralCodeView
+    getUserById(id: Int): UserView
+
+    #Invoice
+    allInvoices: [InvoiceResponse]
+    getInvoiceById(invoiceId: Int!): InvoiceResponse
+    getInvoiceByPaymentId(paymentId: Int!): InvoiceResponse
+    getInvoiceByDateRange(beginDate: String!, endDate: String!): [InvoiceResponse]
+
+    #User Device
+    getActiveDevices: [UserDeviceView]
+    resellerGetActiveDevices(userId: Int) : [UserDeviceView]
+}

@@ -1,0 +1,34 @@
+input UserDeviceInput {
+    os: String
+    deviceId: String!
+    appVersion: String
+    deviceModel: String
+    deviceName: String
+    fcmToken: String
+}
+
+input NotificationInput {
+    subject: String!
+    content: String!
+}
+
+type UserDeviceView {
+    id: Int
+    userId: Int
+    os: String
+    deviceId: String
+    loginDate: LocalDateTime
+    logoutDate: LocalDateTime
+    appVersion: String
+    deviceModel: String
+    deviceName: String
+    fcmToken: String
+    isActive: Boolean
+    isBlocked: Boolean
+}
+
+type FcmNotificationView {
+    status: Boolean
+    message: String
+}
+

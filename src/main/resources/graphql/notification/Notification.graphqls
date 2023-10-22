@@ -1,0 +1,7 @@
+input ScheduleEmailRequest {
+    email:String
+    subject: String
+    body:String
+    dateTime:LocalDateTime
+    timeZone:String
+}

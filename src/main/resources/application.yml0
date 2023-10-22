@@ -1,0 +1,90 @@
+server:
+  port: 5000
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${SPRING_MAIL_USERNAME}
+    password: ${SPRING_MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          starttls:
+            enable: true
+
+  quartz:
+    job-store-type: jdbc
+    properties:
+      org.quartz.threadPool:
+        threadCount: 5
+
+application:
+  website-url: https://orbnet.xyz
+  secure-key: Gu4yDjzHYxqMc+q9uz5soZEsG0AtPDZi39bLPbLO4r0=
+  default-timezone: Europe/London
+  nginx:
+    file-name: nginx.conf
+    destination-path: .platform/nginx/
+
+jwt:
+  secret: secret
+  issuer: iss
+  expirationMillis: 1000000000000
+  refreshMillis: 100000000000
+  resetPasswordSecret: secret
+  resetPasswordExpirationMillis: 1000000000000
+
+graphql:
+  servlet:
+    exception-handlers-enabled: true
+  datetime:
+    scalars:
+      zone-conversion-enabled: true
+
+stripe:
+  api:
+    secret-key: ${STRIPE_API_SECRET_KEY}
+    public-key: pk_test_51IuGKuKHM8iu6lnJeXPVpGSNucHcJKMvMWYGartWgEFAj67M3DkgFZVVUORjiRHoQ5nao2EyB7EOk2gTUYTi5YtK00Yrmkfkzk
+    webhook-secret: ${STRIPE_API_WEBHOOK_SECRET}
+
+paypal:
+  client-id: ${PAYPAL_CLIEN_ID}
+  secret: ${PAYPAL_SECRET}
+  mode: sandbox
+
+parspal:
+  url: https://sandbox.api.parspal.com/v1/
+  api-key: ${PARSPAL_API_KEY}
+  return-url: unknown
+
+app-store:
+  url: https://sandbox.itunes.apple.com
+  secret: ${APP_STORE_SECRET}
+
+oauth:
+  google:
+    client-ids: ${OAUTH_GOOGLE_CLIENT_IDS}
+  facebook:
+    app-id: ${OAUTH_FACEBOO_APP_ID}
+    app-secret: ${OAUTH_FACEBOOK_APP_SECRET}
+
+twilio:
+  account-sid: ${TWILIO_ACCOUNT_SID}
+  auth-token: ${TWILIO_AUTH_TOKEN}
+  phone-number: ${TWILIO_PHONE_NUMBER}

@@ -1,0 +1,4 @@
+type BuyMoreLoginsView {
+    priceForMoreLogins: Float
+    message: String
+}

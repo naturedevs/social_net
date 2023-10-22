@@ -1,0 +1,38 @@
+# UDID for iOS, Serial number for Android, Name for MacOS and Windows
+input DeviceIdInput {
+    uuid: String
+    serial: String
+    name: String
+}
+
+type DeviceIdView {
+    uuid: String
+    serial: String
+    name: String
+}
+
+enum DeviceOsType{
+    IOS, ANDROID, WINDOWS, MACOS, LINUX
+}
+
+enum DeviceAppType {
+    INTERNAL, EXTERNAL
+}
+
+type DeviceView {
+    deviceAppType: DeviceAppType
+    deviceOsType : DeviceOsType
+    deviceIdView: DeviceIdView
+    appVersion: String
+
+    lastConnectionStartTime: LocalDateTime
+    lastConnectionStopTime: LocalDateTime
+    isConnected: Boolean
+    lastSessionId: String
+    isDeactivated: Boolean
+
+    lastConnectedServerId: Int
+    lastConnectedServerCountry: String
+    lastConnectedServerCity: String
+}
+

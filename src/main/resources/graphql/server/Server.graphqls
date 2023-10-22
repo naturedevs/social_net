@@ -1,0 +1,65 @@
+input ServerEdit {
+    hostName: String!
+    publicIp: String!
+    type: ServerType!
+    privateIp: String
+    city: String
+    country: String
+    continent: String
+    secret: String!
+    ports: Int
+    sshUsername: String
+    sshKey: String
+    killCommand: String
+    rootCommand: String
+    description: String
+    hero: String
+    spot: String
+    zeus: String
+    bridgeIp: String
+    bridgeCountry: String
+}
+
+enum ServerType {
+    cisco,other
+}
+
+type ServerView {
+    id: Int
+    hostName: String
+    publicIp: String
+    type: ServerType
+    privateIp: String
+    city: String
+    country: String
+    continent: String
+    secret: String
+    ports: Int
+    sshUsername: String
+    sshKey: String
+    killCommand: String
+    rootCommand: String
+    description: String
+    hero: String
+    spot: String
+    zeus: String
+    bridgeIp: String
+    bridgeCountry: String
+}
+
+type ClientServerView {
+    id: Int
+    hostName: String
+    publicIp: String
+    city: String
+    country: String
+    description: String
+    continent: String
+    connectedUserCount: Int
+    congestionLevel: String
+    hero: String
+    spot: String
+    zeus: String
+    bridgeIp: String
+    bridgeCountry: String
+}

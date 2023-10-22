@@ -1,0 +1,42 @@
+input TicketCreate {
+    subject: String!
+    text: String!
+    category: TicketCategory!
+}
+
+type TicketView {
+    id: Int
+    subject: String!
+    text: String!
+    category: TicketCategory!
+    status: TicketStatus!
+    creator: UserView!
+    replies: [TicketReplyView]
+    createdAt: String!
+}
+
+type TicketPage {
+    totalElements: Int,
+    size: Int,
+    number: Int,
+    content:  [TicketView]
+}
+
+enum TicketStatus {
+    CUSTOMER_REPLY, ANSWERED, OPEN, CLOSED
+}
+
+enum TicketCategory {
+    PAYMENT_AND_BILLING, ACCOUNT_ISSUES, TECHNICAL_ISSUE, OTHER
+}
+
+input TicketReplyCreate {
+    text: String!
+}
+
+type TicketReplyView {
+    id: Int!
+    text: String!
+    creator: UserView!
+    createdAt: String!
+}

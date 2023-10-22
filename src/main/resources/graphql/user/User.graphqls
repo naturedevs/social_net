@@ -1,0 +1,97 @@
+input UserCreate {
+    email: String!
+    password: String
+    resellerId: Int
+}
+
+type UserView {
+    id: Int!
+    email: String!
+    username: String
+    resellerId: Int
+    role: String!
+    enabled: Boolean
+    radAccess: String!
+    radAccessClear: String
+    profile: UserProfileView
+    createdAt: LocalDateTime
+    updatedAt: LocalDateTime
+    userDeviceList: [DeviceView]
+    userDevicesInfo: [UserDeviceInfo]
+    subscription: UserSubscriptionView
+    userSubscriptionList: [UserSubscriptionView]
+}
+
+input UserProfileEdit {
+    firstName: String
+    lastName: String
+    phone: String
+    address: String
+    city: String
+    country: String
+    postalCode: String
+    birthDate: LocalDate
+}
+
+type UserProfileView {
+    firstName: String
+    lastName: String
+    phone: String
+    address: String
+    city: String
+    country: String
+    postalCode: String
+    birthDate: LocalDate
+}
+
+type RoleView {
+    id: Int,
+    name: String
+}
+
+input LoginCredentials {
+    email: String!
+    password: String!
+}
+
+type AuthenticatedUser {
+    accessToken: String!
+    user: UserView!
+}
+
+input ResellerUserCreate {
+    email: String!
+    password: String!
+    groupId: Int!
+}
+
+type UserPage {
+    totalElements: Int,
+    size: Int,
+    number: Int,
+    content:  [UserView]
+}
+
+input ResellerUserEdit {
+    password: String
+    resellerId: Int
+    groupId: Int
+    multiLoginCount: Int
+    userProfileEdit: UserProfileEdit
+}
+
+type UserSubscriptionView {
+    group: GroupView
+    duration: Int
+    multiLoginCount: Int
+    expiresAt: String
+    createdAt: String
+    updatedAt: String
+    dailyBandwidth: String
+    downloadUpload: String
+}
+
+type UserDeviceInfo {
+    name: String
+    active: Boolean
+}

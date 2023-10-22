@@ -1,0 +1,95 @@
+input ResellerCreate {
+    email: String
+    password: String
+    credit: String
+    level: ResellerLevelName
+    phone: String
+}
+
+input ResellerEdit {
+    email: String
+    phone: String
+}
+
+type ResellerView {
+    id: Int
+    email: String
+    firstName: String
+    lastName: String
+    credit: String
+    level: ResellerLevelName
+    phone: String
+    serviceGroups: [ServiceGroupView]
+}
+
+input ResellerLevelEdit {
+    discountPercent: String!
+    minScore: String!
+}
+
+type ResellerLevelView {
+    id: Int!
+    name: ResellerLevelName!
+    discountPercent: String!
+    minScore: String!
+}
+
+type ResellerCreditView {
+    id: Int!
+    email: String!
+    credit: Float
+}
+
+input ResellerLevelCoefficientsEdit {
+    monthCreditPercent: String
+    monthCreditMax: String
+    currentCreditPercent: String
+    currentCreditMax: String
+    activeSubscriptionPercent: String
+    activeSubscriptionMax: String
+    membershipDurationPercent: String
+    membershipDurationMax: String
+    depositIntervalManualDays: String
+    depositIntervalMax: String
+    totalSalePercent: String
+    totalSaleMax: String
+    monthSalePercent: String
+    monthSaleMax: String
+}
+
+type ResellerLevelCoefficientsView {
+    monthCreditPercent: String
+    monthCreditMax: String
+    currentCreditPercent: String
+    currentCreditMax: String
+    activeSubscriptionPercent: String
+    activeSubscriptionMax: String
+    membershipDurationPercent: String
+    membershipDurationMax: String
+    depositIntervalManualDays: String
+    depositIntervalMax: String
+    totalSalePercent: String
+    totalSaleMax: String
+    monthSalePercent: String
+    monthSaleMax: String
+}
+
+enum ResellerLevelName {
+    BRONZE, SILVER, GOLD, DIAMOND, STARTER, OWNER
+}
+
+input ResellerScoreLimitEdit {
+    symbol: String
+    maxLimit: Int
+}
+
+type ResellerScoreLimit {
+    scoreDefinition: String
+    symbol: String
+    maximumLimit: Int
+}
+
+type ResellerScore {
+    resellerScore: Float
+    resellerId: Int
+}

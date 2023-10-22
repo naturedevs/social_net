@@ -1,0 +1,124 @@
+type Mutation {
+    oauthLogin(token: String!, socialMedia: SocialMedia!): AuthenticatedUser
+
+    register(userCreate: UserCreate!): AuthenticatedUser!
+    signup(email: String!, password: String!, referral: String): AuthenticatedUser!
+    editProfile(userProfile: UserProfileEdit): UserProfileView
+    editAutoRenew(isActive: Boolean!): Boolean
+    login(email: String!, password: String!): AuthenticatedUser!
+    requestResetPassword(email: String!): Boolean!
+    resetPassword(token: String!, password: String!): Boolean!
+    changePassword(oldPassword: String!, password: String!): Boolean!
+    createServiceGroup(serviceGroup: ServiceGroupEdit!): ServiceGroupView
+    editServiceGroup(id: Int!, serviceGroup: ServiceGroupEdit!): ServiceGroupView
+    deleteServiceGroup(id: Int!): ServiceGroupView
+    createGroup(group: GroupEdit): GroupView
+    editGroup(id: Int!, group: GroupEdit): GroupView
+    deleteGroup(id: Int!): GroupView
+    createServer(server: ServerEdit): ServerView
+    editServer(id: Int!, server: ServerEdit): ServerView
+    deleteServer(id: Int!): ServerView
+
+    # admin users
+    createNewUserByAdmin(groupId: Int, resellerId: Int, firstName: String, lastName: String, userName: String, email: String, devices: String, country: String, phone: String): UserView
+    deleteUser(id: Int): Boolean
+    deleteBundleUsers(ids: [Int]): Boolean
+    createUser(user: UserCreate, userProfile: UserProfileEdit): Boolean
+    updateSubscription(userId: Int, multiLoginCount: Int, dailyBandwidth: Float, downloadUpload: Float): Boolean
+    editProfileByAdmin(id: Int, updatedUser: UserCreate, updatedProfile: UserProfileEdit): Boolean
+
+    # resellers
+    createReseller(reseller: ResellerCreate): ResellerView!
+    setResellerLevel(resellerId: Int!, level: ResellerLevelName!): ResellerView!
+    addResellerCredit(resellerId: Int!, credit: String!): ResellerView!
+    editReseller(id: Int!, reseller: ResellerEdit): ResellerView!
+    deleteReseller(id: Int!): ResellerView!
+    addResellerServiceGroup(resellerId: Int, serviceGroupId: Int): ResellerView!
+    removeResellerServiceGroup(resellerId: Int, serviceGroupId: Int): ResellerView!
+    resellerCreateUser(user: ResellerUserCreate): UserView!
+    resellerEditUser(id: Int!, resellerUserEdit: ResellerUserEdit): UserView!
+    resellerEditUserByEmail(email: String!, resellerUserEdit: ResellerUserEdit): UserView!
+    resellerDeleteUser(id: Int!): UserView!
+    resellerDeleteUserByEmail(email: String!): UserView!
+    updateResellerLevel(id: Int!, level: ResellerLevelEdit!): ResellerLevelView
+    updateResellerLevelCoefficients(levelCoefficients: ResellerLevelCoefficientsEdit): ResellerLevelCoefficientsView
+    updateResellerScoreLimitBySymbol(resellerScoreLimitEdit: ResellerScoreLimitEdit): ResellerScoreLimit
+    updateResellerScoreLimits(resellerScoreLimitEdits: [ResellerScoreLimitEdit]): [ResellerScoreLimit]
+    calculateResellerScore(resellerId: Int): ResellerScore
+
+    # files
+    createFile(file: FileEdit): FileView
+    editFile(id: Int!, file: FileEdit): FileView
+    deleteFile(id: Int!): FileView
+
+    # news
+    createNews(news: NewsEdit): NewsView
+    editNews(id: Int!, news: NewsEdit): NewsView
+    deleteNews(id: Int!): NewsView
+    createTicket(ticket: TicketCreate): TicketView
+    closeTicket(id: Int!): TicketView
+    closeTickets(id: [Int]!): [TicketView]
+    replyToTicket(ticketId: Int!, reply: TicketReplyCreate): TicketReplyView
+
+    # payment
+    stripeCreatePayment(category: PaymentCategory!, groupId: Int, moreLoginCount: Int, renew: Boolean, stripeMethodId: String): StripePaymentResponse
+    paypalCreatePayment(category: PaymentCategory!, groupId: Int, moreLoginCount: Int): PaypalCreatePaymentResponse
+    
+    coinpaymentCreatePayment(category: PaymentCategory!, groupId: Int, moreLoginCount: Int, coin: String!) : CoinPaymentResponse
+    coinpaymentCreatePayment2(
+        category: PaymentCategory!, 
+        groupId: Int, 
+        moreLoginCount: Int, 
+        coin: String!
+    ) : AddressResponse
+
+    paypalApprovePayment(orderId: String): PaypalApprovePaymentResponse
+    appleCreatePayment(receipt: String): Boolean
+    parspalCreatePayment(category: PaymentCategory!, groupId: Int, moreLoginCount: Int) : ParspalCreatePaymentResponse
+    parspalApprovePayment(payment_id: String, receipt_number: String): Boolean
+
+    # upload users
+    uploadUsers: Boolean
+
+    #connections and devices
+    disconnectBySessionId (onlineSessionId: String!): Boolean
+    disconnectByUserIdAndDeviceId(userId: Int!, deviceIdInput: DeviceIdInput): Boolean
+    activateDevice(userId: Int!, deviceIdInput: DeviceIdInput): Boolean
+    deactivateDevice(userId: Int!, deviceIdInput: DeviceIdInput): Boolean
+
+    #scheduling
+    scheduleEmail(scheduleEmailRequest: ScheduleEmailRequest): Boolean
+
+    sendSms(smsRequest: SmsRequest): Boolean
+
+    #subscription
+    renewWithoutGroup(username: String!, days: Int!) : UserSubscriptionView
+    resetUserSubscriptionWithCurrentGroup(username: String!) : UserSubscriptionView
+    resetUserSubscriptionWithNewGroup(username: String!, groupId: Int!) : UserSubscriptionView
+    resellerRenewUserSubscriptionWithCurrentGroup(username: String!) : UserSubscriptionView
+    resellerRenewUserSubscriptionWithNewGroup(username: String!, groupId: Int!) : UserSubscriptionView
+
+    #Invoice
+    updateInvoice(invoiceUpdate: InvoiceUpdate): InvoiceResponse
+    emailInvoicePDF(invoicePdf: InvoicePDF): Boolean
+
+    #Discount
+    createCouponCode(couponCodeView: CouponCodeView): CouponCode
+    updateCouponCode(couponCodeView: CouponCodeView): CouponCode
+    checkCouponCode(code: String): CouponCode
+    useCouponCode(code: String): CouponCode
+    generateTokenCodeForUser(tokenCodeView: TokenCodeView): TokenCodeResponse
+    useTokenCode(code: String): TokenCode
+    checkTokenCode(code: String): TokenCode
+
+    #User Device
+    loginDevice(device: UserDeviceInput!): UserDeviceView
+    logoutDeviceByUserDeviceId(userDeviceId: Int!): UserDeviceView
+    logoutDeviceByDeviceId(deviceId: String!): UserDeviceView
+    resellerLogoutDevice(userId: Int!, deviceId: String!): UserDeviceView
+    resellerActivateDevice(deviceId: String!): UserDeviceView
+    resellerDeactivateDevice(deviceId: String!): UserDeviceView
+    sendNotificationByDeviceId(deviceId: String!, notification: NotificationInput! ): FcmNotificationView
+    sendNotificationByToken(token: String!, notification: NotificationInput!): FcmNotificationView
+    sendNotificationToAll(notification: NotificationInput!): FcmNotificationView
+}

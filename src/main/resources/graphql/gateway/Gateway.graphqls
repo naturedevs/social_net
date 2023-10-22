@@ -1,0 +1,4 @@
+type GatewayView {
+    id: Int,
+    name: String
+}

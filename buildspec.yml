@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn package
+      - mv target/orbnet.jar orbnet.jar
+artifacts:
+  type: zip
+  files:
+    - orbnet.jar
+    - .ebextensions/**/*
+    - .platform/**/*
+    - Procfile
+  # discard-paths: yes

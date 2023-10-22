@@ -1,0 +1,37 @@
+type CouponCode {
+    id: Int
+    couponCode: String
+    startDate: LocalDate
+    expiryDate: LocalDate
+    discountRate: Int
+    quantity: Int
+    createdAt: LocalDateTime
+}
+
+input CouponCodeView {
+    couponCode: String
+    startDate: LocalDate
+    expiryDate: LocalDate
+    discountRate: Int
+    quantity: Int
+}
+
+input TokenCodeView {
+    userId: Int
+    discountRate: Int
+}
+
+type TokenCode {
+    id: Int
+    userId: Int
+    tokenCode: String
+    discountRate: Int
+    isActive: Boolean
+    usedTimestamp: LocalDateTime
+    createdAt: LocalDateTime
+}
+
+type TokenCodeResponse {
+    tokenCode: String
+    message: String
+}

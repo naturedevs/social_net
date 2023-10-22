@@ -1,0 +1,4 @@
+input SmsRequest {
+    phoneNumber:String
+    message: String
+}

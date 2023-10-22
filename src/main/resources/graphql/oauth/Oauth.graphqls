@@ -1,0 +1,3 @@
+enum SocialMedia {
+    GOOGLE, FACEBOOK, APPLE, TWITTER, AMAZON, LINKEDIN
+}

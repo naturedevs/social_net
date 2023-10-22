@@ -1,0 +1,176 @@
+server:
+  port: 5000
+
+spring:
+  datasource:
+    # url: jdbc:mysql://orbnetdev.cyg6ao0nnff3.ap-south-1.rds.amazonaws.com:3306/radius
+    # username: root
+    # password: bf{Y!{,q32n*JTL2
+    
+    url: jdbc:mysql://orbnetprod.cvvnu2droebi.ap-south-1.rds.amazonaws.com:3306/radius
+    username: root
+    password: rYP3ZxDBBzFwC66T
+    
+    # url: ${SPRING_DATASOURCE_URL}
+    # username: ${SPRING_DATASOURCE_USERNAME}
+    # password: ${SPRING_DATASOURCE_PASSWORD}
+    hikari:
+      minimumIdle: 2
+      maximumPoolSize: 50
+      idleTimeout: 120000
+      connectionTimeout: 300000
+      leakDetectionThreshold: 300000
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    # username: ${SPRING_MAIL_USERNAME}
+    # password: ${SPRING_MAIL_PASSWORD}
+    username: no-reply@orbvpn.com
+    password: arzlyjzzrpqstwhl
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          starttls:
+            enable: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 903170896228-gkomrh8dvrk95ch62ere4i3a01jdlbgr.apps.googleusercontent.com
+            client-secret: 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
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+          facebook:
+            client-id: 2998455443765493
+            client-secret: 690acb522724caa05e0c70083c1333dc
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+          linkedin:
+            client-id: 786xac8z0s13fu
+            client-secret: OIL0j8K7bsc7AN0K
+            scope:  r_liteprofile, r_emailaddress
+            authorization-grant-type: authorization_code
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            client-name: LinkedIn
+            client-authentication-method: post
+        provider:
+          linkedin:
+            authorization-uri: https://www.linkedin.com/oauth/v2/authorization
+            token-uri: https://www.linkedin.com/oauth/v2/accessToken
+            user-info-uri: https://api.linkedin.com/v1/people/~?format=json
+            user-name-attribute: id
+
+
+  quartz:
+    job-store-type: jdbc
+    properties:
+      org.quartz.threadPool:
+        threadCount: 5
+      org.quartz.jobStore.driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+
+application:
+  website-url: http://orbnet.xyz
+  secure-key: Gu4yDjzHYxqMc+q9uz5soZEsG0AtPDZi39bLPbLO4r0=
+  default-timezone: Europe/London
+  nginx:
+    file-name: nginx.conf
+    destination-path: .platform/nginx/
+
+jwt:
+  secret: secret
+  issuer: iss
+  expirationMillis: 1000000000000
+  refreshMillis: 100000000000
+  resetPasswordSecret: secret
+  resetPasswordExpirationMillis: 1000000000000
+
+graphql:
+  servlet:
+    exception-handlers-enabled: true
+  datetime:
+    scalars:
+      zone-conversion-enabled: true
+
+stripe:
+  api:
+    secret-key: sk_test_51IuGKuKHM8iu6lnJ0fEKCdca9sA2DF8K4dOMcHSBoHk4ljCbbH5aEYSRuCPkCpdZNUeWSq4Cut5T19Yyl1vVpFuE00IKjpvPvU
+    public-key: pk_test_51IuGKuKHM8iu6lnJeXPVpGSNucHcJKMvMWYGartWgEFAj67M3DkgFZVVUORjiRHoQ5nao2EyB7EOk2gTUYTi5YtK00Yrmkfkzk
+    webhook-secret: whsec_8GpHy7eDtKlMgThkDWPfSm7dougQspxb
+    # secret-key: ${STRIPE_API_SECRET_KEY}
+    # public-key: pk_test_51IuGKuKHM8iu6lnJeXPVpGSNucHcJKMvMWYGartWgEFAj67M3DkgFZVVUORjiRHoQ5nao2EyB7EOk2gTUYTi5YtK00Yrmkfkzk
+    # webhook-secret: ${STRIPE_API_WEBHOOK_SECRET}
+
+coinpayment:
+  merchant-id: 9fddb06e84bf319ec513a874924de7bc
+  ipn:
+    url: https://orbnet.xyz/ipn
+    secret: s^oQGj&6$*eC
+  key:
+    public: 510bdc1045030c9183b864aedeb791ece616da81983c65d6995b31f426ad317a
+    private: 02960e6c9263bc0D0Bc6283FBF688e7AA35A51D2a7ed95206E9de8E8f82C2602
+
+
+paypal:
+  client-id: AQLq6ju_TV-1obwarCVgpoOFkEYuZzG0f4fWMvZ3W9OlO1Pzv1yviba1DWWkFaqMUQ_YUdoguIfxkj-f
+  secret: EDS3YYiH3P7u7Rnwq5tdjH0_JAfR4RDSPVAtydY3cCbUtnnNC9FFQyRW2FkZ0yuLR5-e7nkTwbp-KfOp
+  # client-id: ${PAYPAL_CLIEN_ID}
+  # secret: ${PAYPAL_SECRET}
+  mode: live
+
+parspal:
+  url: https://sandbox.api.parspal.com/v1/
+  api-key: unknown
+  # api-key: ${PARSPAL_API_KEY}
+  return-url: unknown
+
+app-store:
+  url: https://sandbox.itunes.apple.com
+  secret: 2b117fe8579946e68445aa2ac3fe5ecc
+  # secret: ${APP_STORE_SECRET}
+
+oauth:
+  google:
+    client-id: 903170896228-gkomrh8dvrk95ch62ere4i3a01jdlbgr.apps.googleusercontent.com
+    client-secret: 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
+    token-url: https://oauth2.googleapis.com/token
+    redirectUri: http://orbnet.xyz/oauth2/callback/google
+  facebook:
+    app-id: 2998455443765493
+    app-secret: 57630025fb7dd1f42ca7e9c423d1b744
+    redirectUri: http://orbnet.xyz/oauth2/callback/facebook
+  linkedin:
+    client-id: 786xac8z0s13fu
+    client-secret: OIL0j8K7bsc7AN0K
+    redirectUri: http://orbnet.xyz/oauth2/callback/linkedin
+    token-url: https://www.linkedin.com/oauth/v2/accessToken
+    profile-url: https://api.linkedin.com/v2/me
+    email- url: https://api.linkedin.com/v2/emailAddress
+  twitter:
+    client-id: mdkwQazRJCIGkbEuepby6gio1
+    client-secret: wP7RZbTU8S5VDpYurqW19JVIV7vKc5DhBKMeH8FSOMJJwYSpBV
+    callbackUrl: http://orbnet.xyz/oauth2/callback/twitter
+    userInfoUrl: https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true
+
+
+  # google:
+  #   client-ids: ${OAUTH_GOOGLE_CLIENT_IDS}
+  # facebook:
+  #   app-id: ${OAUTH_FACEBOO_APP_ID}
+  #   app-secret: ${OAUTH_FACEBOOK_APP_SECRET}
+
+twilio:
+  account-sid: AC996a22872406d85f2434fc5f8104f501
+  auth-token: 3e77bdcb0e60507546e5bdbd5410f110
+  phone-number: +14154944408
+  # account-sid: ${TWILIO_ACCOUNT_SID}
+  # auth-token: ${TWILIO_AUTH_TOKEN}
+  # phone-number: ${TWILIO_PHONE_NUMBER}

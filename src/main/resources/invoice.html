@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Invoice</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .total_price {
+            color: #3d7be1;
+            font-weight: bold;
+            font-size: 32px;
+        }
+
+        .color {
+            color: #0078d3;
+        }
+
+        .right {
+            text-align: right;
+        }
+        .left {
+            text-align: left;
+        }
+
+        .table {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-collapse:collapse;
+            font-size: 16px;
+            line-height: 24px;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #555;
+
+        }
+
+        .table-head {
+            color: white;
+            background-color: #0078d3;
+            height: 90px;
+
+        }
+        .head-item {
+            text-align: center;
+        }
+        .title {
+            font-size: 56px;
+            padding: 0 36px;
+
+        }
+        .body-item {
+            height: 90px;
+            padding: 0 36px;
+        }
+
+        .content-seperator {
+            height: 3px;
+            background-color: #0078d3;
+        }
+        .content-header {
+            height:40px;
+            overflow: hidden;
+            padding: 0 36px;
+        }
+        .detail-item {
+            height: 50px;
+            padding: 0 36px;
+
+        }
+        .footer-item {
+            padding: 0 36px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <table class="table">
+        <tr class="table-head">
+            <td class="title">
+                INVOICE
+            </td>
+            <td class="head-item">
+                +1 (725) 223 0569<br />
+                info@orbvpn.com<br />
+                orbvpn.com<br />
+            </td>
+            <td class="head-item">
+                24th Floor, The Shard<br />
+                London, England <br />
+                SE1 9SG, GB<br />
+            </td>
+        </tr>
+        <tr>
+            <td class="body-item">
+                <h3>
+                    Billed To
+                </h3>
+                <p th:text="${invoice_id}">
+                    <span th:text="${client_name}"></span><br />
+                    <span th:text="${client_address}"></span>
+                </p>
+            </td>
+            <td class="body-item">
+                <h3>
+                    Invoice Number
+                </h3>
+                <p th:text="${invoice_id}">
+                </p>
+                <h3>
+                    Date Of Issue
+                </h3>
+                <p th:text="${invoice_date}">
+                </p>
+            </td>
+            <td class="body-item">
+                <h3>
+                    Invoice Total
+                </h3>
+                <p class="total_price">
+                    $ <span th:text="${invoice_total}"></span>
+                </p>
+            </td>
+        </tr>
+        <tr class="content-seperator">
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="content-header">
+                <h3 class="color">
+                    Description
+                </h3>
+            </td>
+            <td class="content-header"></td>
+            <td class="content-header right">
+                <h3 class="color">
+                    Amount
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td class="detail-item">
+                <p class="context-text">
+                    Group Subscription
+                </p>
+            </td>
+            <td class="detail-item"></td>
+            <td class="detail-item right">
+                <p class="context-text" th:text="${group_amount}">
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="detail-item">
+                <p class="context-text right">
+                    Multi Login Count
+                </p>
+            </td>
+            <td class="detail-item"></td>
+            <td class="detail-item">
+                <p class="context-text" th:text="${multi_login_amount}">
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="footer-item"></td>
+            <td class="footer-item">
+                <table class="table">
+                    <tr class="footer-detail">
+                        <td>
+                            <h3>Subtotal</h3>
+                        </td>
+                        <td class="left">
+                            <h3 class="inline">
+                                <text class="right" th:text="${subtotal}"></text>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr class="footer-detail">
+                        <td>
+                            <h3>Tax</h3>
+                        </td>
+                        <td class="left">
+                            <h3>
+                                <text th:text="${tax}"></text>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr class="footer-detail">
+                        <td>
+                            <h3>Total</h3>
+                        </td>
+                        <td class="left">
+                            <h3>
+                                <text th:text="${invoice_total}"></text>
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr class="footer-detail">
+                        <td>
+                            <h3>Amount Due</h3>
+                        </td>
+                        <td class="left">
+                            <h3>
+                                <text th:text="${invoice_total}"></text>
+                            </h3>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="body-item">
+                <h3>Invoice Terms</h3>
+                <p>
+                    Ex. Please pay your invoice by...
+                </p>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    </table>
+
+</div>
+</body>
+
+</html>
